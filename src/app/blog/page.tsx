@@ -7,8 +7,13 @@ export default function BlogPage() {
       {posts.map((post) => (
         <article
           key={post.slug}
-          className="rounded-none border-4 border-stone-700 bg-stone-100 p-6 shadow-[6px_6px_0_0_#44403c] transition hover:-translate-y-0.5"
+          className="mc-animate-in mc-hover-lift rounded-none border-4 border-stone-700 bg-stone-100 p-6 shadow-[6px_6px_0_0_#44403c]"
         >
+          <div className="mb-3 text-xl">
+            <span className="mc-pickaxe">⛏️</span>
+            <span className="mc-mob ml-2">🧟</span>
+          </div>
+
           <div className="flex flex-wrap items-center gap-2 text-xs font-bold uppercase tracking-wide text-stone-600">
             <span>{post.date}</span>
             <span className="text-stone-400">|</span>
@@ -36,7 +41,7 @@ export default function BlogPage() {
             href={`/blog/${post.slug}`}
             className="mt-5 inline-flex items-center rounded-none border-2 border-stone-700 bg-lime-400 px-3 py-2 text-sm font-black text-stone-900 transition hover:bg-lime-300"
           >
-            Mo Nhat Ky Chi Tiet
+            Mở nhật ký chi tiết
           </Link>
         </article>
       ))}

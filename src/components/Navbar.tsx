@@ -4,9 +4,9 @@ import Link from "next/link";
 import { useState } from "react";
 
 const navLinks = [
-  { href: "/", label: "Home" },
-  { href: "/about", label: "About" },
-  { href: "/projects", label: "Projects" },
+  { href: "/", label: "Trang chủ" },
+  { href: "/about", label: "Về mình" },
+  { href: "/projects", label: "Dự án" },
   { href: "/blog", label: "Blog" },
 ];
 
@@ -21,7 +21,9 @@ export default function Navbar() {
             href="/"
             className="inline-flex items-center rounded-none border-2 border-emerald-700 bg-emerald-500 px-3 py-2 text-sm font-black uppercase tracking-wide text-emerald-950 shadow-sm transition hover:bg-emerald-400 dark:border-emerald-400 dark:bg-emerald-400 dark:text-emerald-950"
           >
-            Minecraft Portfolio
+            <span className="mc-pickaxe mr-2">⛏️</span>
+            Portfolio Minecraft
+            <span className="mc-mob mc-mob-delay ml-2">🧟</span>
           </Link>
 
           <button

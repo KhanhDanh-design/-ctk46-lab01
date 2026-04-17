@@ -19,7 +19,7 @@ export default function Error({ error, reset }: ErrorPageProps) {
 
       <div className="relative w-full max-w-2xl rounded-none border-4 border-red-900 bg-stone-900/95 p-6 shadow-[8px_8px_0_0_#450a0a] sm:p-10">
         <p className="text-xs font-bold uppercase tracking-[0.2em] text-red-300">
-          Danh Nguyen Tuan Khanh - 2212390
+          Danh Nguyễn Tuấn Khanh - 2212390
         </p>
 
         <h1 className="mt-3 text-4xl font-black uppercase tracking-widest text-red-400 sm:text-5xl">

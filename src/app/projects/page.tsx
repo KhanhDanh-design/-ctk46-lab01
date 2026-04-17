@@ -3,16 +3,21 @@ import { projects } from "@/data/projects";
 
 export default function ProjectsPage() {
   return (
-    <div className="space-y-8">
-      <section className="rounded-none border-4 border-emerald-700 bg-linear-to-b from-emerald-500 to-emerald-400 p-7 shadow-[6px_6px_0_0_#065f46] dark:border-emerald-500 dark:from-emerald-700 dark:to-emerald-600 dark:shadow-[6px_6px_0_0_#022c22]">
+    <div className="minecraft-page space-y-8">
+      <section className="mc-animate-in relative overflow-hidden rounded-none border-4 border-emerald-700 bg-linear-to-b from-emerald-500 to-emerald-400 p-7 shadow-[6px_6px_0_0_#065f46] dark:border-emerald-500 dark:from-emerald-700 dark:to-emerald-600 dark:shadow-[6px_6px_0_0_#022c22]">
+        <div className="pointer-events-none absolute right-4 top-4 text-2xl">
+          <span className="mc-pickaxe">⛏️</span>
+          <span className="mc-mob ml-2">🐺</span>
+        </div>
+
         <p className="text-sm font-bold uppercase tracking-[0.18em] text-emerald-950 dark:text-emerald-100">
           Emerald Projects
         </p>
         <h1 className="mt-2 text-3xl font-black text-emerald-950 sm:text-4xl dark:text-emerald-50">
-          Danh sach cong trinh the gioi khoi vuong
+          Danh sách công trình thế giới khối vuông
         </h1>
         <p className="mt-4 max-w-3xl leading-7 font-semibold text-emerald-900 dark:text-emerald-100">
-          Các dự án cá nhân của Danh Nguyen Tuan Khanh - 2212390 xoay quanh xây
+          Các dự án cá nhân của Danh Nguyễn Tuấn Khanh - 2212390 xoay quanh xây
           dựng, redstone và hệ thống tự động trong Minecraft.
         </p>
       </section>
@@ -21,7 +26,7 @@ export default function ProjectsPage() {
         {projects.map((project) => (
           <article
             key={project.id}
-            className="rounded-sm border-4 border-emerald-700 bg-gray-50 p-6 shadow-md transition hover:-translate-y-0.5 dark:border-emerald-500 dark:bg-gray-800"
+            className="mc-animate-in mc-hover-lift rounded-sm border-4 border-emerald-700 bg-gray-50 p-6 shadow-md dark:border-emerald-500 dark:bg-gray-800"
           >
             <div className="mb-3 flex items-center justify-between gap-3">
               <h2 className="text-lg font-black text-gray-900 dark:text-emerald-100">
@@ -29,7 +34,7 @@ export default function ProjectsPage() {
               </h2>
               <span
                 className={`rounded-sm border-2 px-3 py-1 text-xs font-black ${
-                  project.status === "Hoan thanh"
+                  project.status === "Hoàn thành"
                     ? "border-emerald-700 bg-emerald-200 text-emerald-900 dark:border-emerald-500 dark:bg-emerald-900/40 dark:text-emerald-200"
                     : "border-amber-700 bg-amber-200 text-amber-900 dark:border-amber-500 dark:bg-amber-900/40 dark:text-amber-200"
                 }`}

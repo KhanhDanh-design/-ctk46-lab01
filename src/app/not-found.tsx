@@ -7,7 +7,7 @@ export default function NotFound() {
 
       <div className="relative w-full max-w-2xl rounded-none border-4 border-stone-500 bg-stone-900/90 p-6 shadow-[8px_8px_0_0_#1c1917] sm:p-8">
         <p className="text-xs font-bold uppercase tracking-[0.2em] text-lime-300">
-          Danh Nguyen Tuan Khanh - 2212390
+          Danh Nguyễn Tuấn Khanh - 2212390
         </p>
 
         <h1 className="mt-3 text-3xl font-black uppercase tracking-widest text-stone-100 sm:text-4xl">

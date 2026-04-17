@@ -13,7 +13,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
   if (!post) {
     return (
-      <article className="rounded-none border-4 border-amber-700 bg-amber-50 p-7 shadow-[6px_6px_0_0_#92400e]">
+      <article className="mc-animate-in rounded-none border-4 border-amber-700 bg-amber-50 p-7 shadow-[6px_6px_0_0_#92400e]">
         <Link
           href="/blog"
           className="inline-flex items-center rounded-none border-2 border-stone-700 bg-lime-400 px-3 py-2 text-sm font-black text-stone-900 transition hover:bg-lime-300"
@@ -22,6 +22,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         </Link>
 
         <h1 className="mt-5 text-3xl font-black text-amber-900">
+          <span className="mc-mob mr-2 inline-block">🧟</span>
           Catch-all route đã bắt đường dẫn này
         </h1>
 
@@ -47,13 +48,18 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   }
 
   return (
-    <article className="rounded-none border-4 border-stone-700 bg-stone-100 p-7 shadow-[6px_6px_0_0_#44403c]">
+    <article className="mc-animate-in rounded-none border-4 border-stone-700 bg-stone-100 p-7 shadow-[6px_6px_0_0_#44403c]">
       <Link
         href="/blog"
         className="inline-flex items-center rounded-none border-2 border-stone-700 bg-lime-400 px-3 py-2 text-sm font-black text-stone-900 transition hover:bg-lime-300"
       >
         ← Quay lại túi đồ (Danh sách Blog)
       </Link>
+
+      <div className="mt-3 text-2xl">
+        <span className="mc-pickaxe">⛏️</span>
+        <span className="mc-mob mc-mob-delay ml-2">🧟</span>
+      </div>
 
       <div className="mt-5 flex flex-wrap items-center gap-2 text-xs font-bold uppercase tracking-wide text-stone-600">
         <span>{post.date}</span>

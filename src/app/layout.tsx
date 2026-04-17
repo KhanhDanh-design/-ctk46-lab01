@@ -25,7 +25,7 @@ export default function RootLayout({
           <footer className="border-t-4 border-emerald-600/80 bg-gray-100 dark:border-emerald-500/70 dark:bg-gray-900">
             <div className="mx-auto w-full max-w-6xl px-4 py-5 text-center text-sm font-semibold text-gray-600 sm:px-6 lg:px-8 dark:text-gray-300">
               <p>
-                © 2026 Danh Nguyen Tuan Khanh - 2212390. Built with Next.js and
+                © 2026 Danh Nguyễn Tuấn Khanh - 2212390. Built with Next.js và
                 Tailwind CSS.
               </p>
             </div>

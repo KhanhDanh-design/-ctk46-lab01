@@ -17,13 +17,18 @@ export default async function ProjectDetailPage({
   }
 
   return (
-    <article className="rounded-none border-4 border-stone-700 bg-stone-100 p-7 shadow-[6px_6px_0_0_#44403c]">
+    <article className="mc-animate-in minecraft-page rounded-none border-4 border-stone-700 bg-stone-100 p-7 shadow-[6px_6px_0_0_#44403c]">
       <Link
         href="/projects"
         className="inline-flex items-center rounded-none border-2 border-stone-700 bg-lime-400 px-3 py-2 text-sm font-black text-stone-900 transition hover:bg-lime-300"
       >
         ← Quay lại khu dự án
       </Link>
+
+      <div className="mt-3 text-2xl">
+        <span className="mc-pickaxe">⛏️</span>
+        <span className="mc-mob mc-mob-delay ml-2">🐺</span>
+      </div>
 
       <div className="mt-5 flex flex-wrap items-center gap-2 text-xs font-bold uppercase tracking-wide text-stone-600">
         <span>ID: {project.id}</span>

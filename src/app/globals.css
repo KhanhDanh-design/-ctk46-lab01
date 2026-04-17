@@ -24,3 +24,90 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+@keyframes mcFadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes mcPickaxeSwing {
+  0%,
+  100% {
+    transform: rotate(-8deg);
+  }
+  50% {
+    transform: rotate(14deg);
+  }
+}
+
+@keyframes mcMobFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-7px);
+  }
+}
+
+@keyframes mcOrePulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.35);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(16, 185, 129, 0);
+  }
+}
+
+.minecraft-page {
+  position: relative;
+}
+
+.minecraft-page::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.08;
+  background-image: linear-gradient(to right, #525252 1px, transparent 1px),
+    linear-gradient(to bottom, #525252 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.mc-animate-in {
+  animation: mcFadeInUp 0.65s ease both;
+}
+
+.mc-pickaxe {
+  display: inline-block;
+  transform-origin: 78% 20%;
+  animation: mcPickaxeSwing 1.8s ease-in-out infinite;
+}
+
+.mc-mob {
+  display: inline-block;
+  animation: mcMobFloat 2.5s ease-in-out infinite;
+}
+
+.mc-mob-delay {
+  animation-delay: 0.45s;
+}
+
+.mc-ore-glow {
+  animation: mcOrePulse 2.2s ease-in-out infinite;
+}
+
+.mc-hover-lift {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.mc-hover-lift:hover {
+  transform: translateY(-2px);
+}
