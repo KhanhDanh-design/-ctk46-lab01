@@ -17,7 +17,7 @@ export const posts: Post[] = [
     excerpt:
       "Checklist nhanh de song sot ngay dau: go, da, than va mot noi tru an toan truoc khi quái vat xuat hien.",
     date: "2026-04-17",
-    tags: ["Survival", "Beginner", "Minecraft"] ,
+    tags: ["Survival", "Beginner", "Minecraft"],
     author: AUTHOR,
     content: [
       "Ngay khi vao the gioi, uu tien chat cay de tao cuoc va ban che tao co ban.",
@@ -79,6 +79,34 @@ export const posts: Post[] = [
       "Chia can cu thanh 3 vung: che tao, kho vat pham va nong nghiep de toi uu di chuyen.",
       "Dung den am tran va slab de giam spawn mob trong hanh lang trung tam.",
       "Them cua sat va camera quan sat bang khe kinh de theo doi ben ngoai an toan.",
+    ],
+  },
+  {
+    slug: "toi-uu-kho-do-bang-he-thong-sorter",
+    title: "Toi Uu Kho Do Bang He Thong Item Sorter",
+    excerpt:
+      "Cach xay bo sorter co mo rong de tu dong phan loai item va giam thoi gian tim do trong kho.",
+    date: "2026-04-05",
+    tags: ["Storage", "Redstone", "Automation"],
+    author: AUTHOR,
+    content: [
+      "Bat dau bang module co 3 hopper, 1 comparator, 1 repeater va 1 redstone torch cho moi loai item.",
+      "Dat item mau trong hopper loc de khoa bo loc, tranh item la roi vao nham ngan.",
+      "Chia kho theo khu tai nguyen, khoi xay dung va nong pham de khi mo rong khong bi roi he thong.",
+    ],
+  },
+  {
+    slug: "farm-xp-bang-mob-grinder-don-gian",
+    title: "Farm XP Bang Mob Grinder Don Gian",
+    excerpt:
+      "Huong dan dung thap spawn co ban de farm kinh nghiem on dinh cho viec enchant do nghep.",
+    date: "2026-04-03",
+    tags: ["XP", "Mob Farm", "Survival"],
+    author: AUTHOR,
+    content: [
+      "Xay thap spawn cao tren 100 block so voi mat dat de tang hieu qua spawn mob trong dem.",
+      "Dung nuoc dan mob vao trung tam, roi cho roi xuong do cao vua du de con it mau cho mot hit ket lieu.",
+      "Dat khoi AFK o khoang cach phu hop va thap den khu xung quanh de giam spawn khong mong muon.",
     ],
   },
 ];

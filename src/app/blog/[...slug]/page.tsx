@@ -1,17 +1,47 @@
 import Link from "next/link";
-import { notFound } from "next/navigation";
 import { getPostBySlug, posts } from "@/data/posts";
 
 type BlogPostPageProps = {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ slug: string[] }>;
 };
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const { slug } = await params;
-  const post = getPostBySlug(slug);
+  const joinedPath = slug.join("/");
+  const lookupKey = slug[slug.length - 1];
+  const post = getPostBySlug(lookupKey) ?? getPostBySlug(joinedPath);
 
   if (!post) {
-    notFound();
+    return (
+      <article className="rounded-none border-4 border-amber-700 bg-amber-50 p-7 shadow-[6px_6px_0_0_#92400e]">
+        <Link
+          href="/blog"
+          className="inline-flex items-center rounded-none border-2 border-stone-700 bg-lime-400 px-3 py-2 text-sm font-black text-stone-900 transition hover:bg-lime-300"
+        >
+          ← Quay lại túi đồ (Danh sách Blog)
+        </Link>
+
+        <h1 className="mt-5 text-3xl font-black text-amber-900">
+          Catch-all route đã bắt đường dẫn này
+        </h1>
+
+        <p className="mt-3 text-amber-900">
+          Không có bài viết khớp, nhưng route [...slug] vẫn nhận được URL.
+        </p>
+
+        <div className="mt-4 rounded-none border-2 border-amber-700 bg-amber-100 p-3 text-sm text-amber-950">
+          <p>
+            Đường dẫn đầy đủ: <span className="font-black">/blog/{joinedPath}</span>
+          </p>
+          <p className="mt-1">
+            Số segment: <span className="font-black">{slug.length}</span>
+          </p>
+          <p className="mt-1">
+            Danh sách segment: <span className="font-black">[{slug.join(", ")}]</span>
+          </p>
+        </div>
+      </article>
+    );
   }
 
   return (
@@ -43,7 +73,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       </div>
 
       <p className="mt-4 rounded-none border-2 border-stone-600 bg-stone-200 px-3 py-2 text-sm text-stone-700">
-        Slug hiện tại: <span className="font-black">{slug}</span>
+        Slug segments hiện tại: <span className="font-black">[{slug.join(" / ")}]</span>
       </p>
 
       <div className="mt-6 space-y-4 leading-7 text-stone-700">
@@ -56,5 +86,5 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 }
 
 export async function generateStaticParams() {
-  return posts.map((post) => ({ slug: post.slug }));
+  return posts.map((post) => ({ slug: [post.slug] }));
 }
