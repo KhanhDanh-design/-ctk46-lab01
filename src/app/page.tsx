@@ -1,4 +1,7 @@
 import Link from "next/link";
+import CopyButton from "@/components/CopyButton";
+import Counter from "@/components/Counter";
+import ThemeToggle from "@/components/ThemeToggle";
 
 const skills = [
   "⚒️ Next.js",
@@ -19,7 +22,9 @@ export default function HomePage() {
         <h1 className="mb-2 text-4xl font-black leading-tight sm:text-5xl">
           Danh Nguyễn Tuấn Khanh
         </h1>
-        <p className="text-base font-bold tracking-wide sm:text-lg">MSSV: 2212390</p>
+        <p className="text-base font-bold tracking-wide sm:text-lg">
+          MSSV: 2212390
+        </p>
         <p className="mt-4 max-w-2xl text-base font-semibold sm:text-lg">
           Minecraft Builder & Developer, tập trung xây dựng giao diện web vuông
           vức, tối ưu trải nghiệm người dùng và mô hình hóa tư duy hệ thống như
@@ -44,25 +49,38 @@ export default function HomePage() {
 
       <section className="grid gap-4 sm:grid-cols-3">
         <div className="rounded-sm border-2 border-gray-300 bg-white p-5 shadow-md dark:border-gray-700 dark:bg-gray-800">
-          <p className="text-sm font-semibold text-gray-500 dark:text-gray-300">Trường</p>
-          <p className="mt-2 font-bold text-gray-800 dark:text-white">Đại học Đà Lạt</p>
+          <p className="text-sm font-semibold text-gray-500 dark:text-gray-300">
+            Trường
+          </p>
+          <p className="mt-2 font-bold text-gray-800 dark:text-white">
+            Đại học Đà Lạt
+          </p>
         </div>
         <div className="rounded-sm border-2 border-gray-300 bg-white p-5 shadow-md dark:border-gray-700 dark:bg-gray-800">
-          <p className="text-sm font-semibold text-gray-500 dark:text-gray-300">Ngành học</p>
+          <p className="text-sm font-semibold text-gray-500 dark:text-gray-300">
+            Ngành học
+          </p>
           <p className="mt-2 font-bold text-gray-800 dark:text-white">
             Công nghệ Thông tin
           </p>
         </div>
         <div className="rounded-sm border-2 border-gray-300 bg-white p-5 shadow-md dark:border-gray-700 dark:bg-gray-800">
-          <p className="text-sm font-semibold text-gray-500 dark:text-gray-300">Mục tiêu</p>
-          <p className="mt-2 font-bold text-gray-800 dark:text-white">Frontend Engineer</p>
+          <p className="text-sm font-semibold text-gray-500 dark:text-gray-300">
+            Mục tiêu
+          </p>
+          <p className="mt-2 font-bold text-gray-800 dark:text-white">
+            Frontend Engineer
+          </p>
         </div>
       </section>
 
       <section className="rounded-sm border-4 border-emerald-700 bg-gray-50 p-6 shadow-md dark:border-emerald-500 dark:bg-gray-900">
-        <h2 className="text-2xl font-black text-emerald-800 dark:text-emerald-300">Skills Loadout</h2>
+        <h2 className="text-2xl font-black text-emerald-800 dark:text-emerald-300">
+          Skills Loadout
+        </h2>
         <p className="mt-2 text-sm font-semibold text-gray-600 dark:text-gray-300">
-          Bo ky nang ket hop phat trien web va tu duy xay dung he thong theo phong cach Minecraft.
+          Bo ky nang ket hop phat trien web va tu duy xay dung he thong theo
+          phong cach Minecraft.
         </p>
 
         <div className="mt-5 flex flex-wrap gap-3">
@@ -74,6 +92,21 @@ export default function HomePage() {
               {skill}
             </span>
           ))}
+        </div>
+      </section>
+
+      <section className="rounded-sm border-4 border-emerald-700 bg-gray-50 p-6 shadow-md dark:border-emerald-500 dark:bg-gray-900">
+        <h2 className="text-2xl font-black text-emerald-800 dark:text-emerald-300">
+          Tui do tuong tac
+        </h2>
+        <p className="mt-2 text-sm font-semibold text-gray-600 dark:text-gray-300">
+          Khu vuc nay gom cac Client Component de tuong tac truc tiep tren trang chu.
+        </p>
+
+        <div className="mt-5 grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
+          <Counter />
+          <ThemeToggle />
+          <CopyButton textToCopy="/gamemode creative" />
         </div>
       </section>
     </div>
