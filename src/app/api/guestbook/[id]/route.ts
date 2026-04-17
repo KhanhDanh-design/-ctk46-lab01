@@ -49,7 +49,10 @@ export async function PUT(
   const index = guestbookEntries.findIndex((entry) => entry.id === id);
 
   if (index === -1) {
-    return jsonResponse({ error: "Không tìm thấy lời nhắn cần cập nhật." }, 404);
+    return jsonResponse(
+      { error: "Không tìm thấy lời nhắn cần cập nhật." },
+      404,
+    );
   }
 
   let body: unknown;

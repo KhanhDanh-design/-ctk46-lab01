@@ -13,7 +13,8 @@ export default function BlogError({
         Lỗi khu vực blog!
       </h2>
       <p className="mt-3 text-sm leading-6 text-red-800">
-        {error.message || "Không thể tải dữ liệu blog từ API. Vui lòng thử lại."}
+        {error.message ||
+          "Không thể tải dữ liệu blog từ API. Vui lòng thử lại."}
       </p>
 
       <button

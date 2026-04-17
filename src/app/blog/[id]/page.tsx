@@ -113,7 +113,9 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
         </section>
       ) : null}
 
-      <p className="mt-6 leading-8 whitespace-pre-line text-stone-700">{post.body}</p>
+      <p className="mt-6 leading-8 whitespace-pre-line text-stone-700">
+        {post.body}
+      </p>
 
       <section className="mt-8">
         <h2 className="text-lg font-black text-stone-900">
@@ -126,7 +128,9 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
               key={comment.id}
               className="rounded-none border-2 border-stone-600 bg-stone-200 p-4"
             >
-              <p className="text-sm font-black text-stone-900">{comment.name}</p>
+              <p className="text-sm font-black text-stone-900">
+                {comment.name}
+              </p>
               <p className="text-xs font-semibold text-stone-600">
                 {comment.email}
               </p>

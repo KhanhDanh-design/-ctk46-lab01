@@ -7,8 +7,8 @@ export default function BlogPostNotFound() {
         Không tìm thấy bài viết
       </h2>
       <p className="mt-3 leading-7 text-amber-900">
-        Bài viết bạn truy cập không tồn tại trên JSONPlaceholder hoặc id không hợp
-        lệ.
+        Bài viết bạn truy cập không tồn tại trên JSONPlaceholder hoặc id không
+        hợp lệ.
       </p>
 
       <Link
