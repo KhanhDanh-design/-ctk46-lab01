@@ -1,28 +1,5 @@
 import Link from "next/link";
-
-const posts = [
-  {
-    slug: "xay-dung-portfolio-nextjs",
-    title: "Xây dựng Portfolio cá nhân với Next.js App Router",
-    excerpt:
-      "Tổng quan cấu trúc project, cách chia layout và tổ chức các route cơ bản cho website portfolio.",
-    date: "2026-04-12",
-  },
-  {
-    slug: "cach-to-chuc-component",
-    title: "Cách tổ chức component để project dễ mở rộng",
-    excerpt:
-      "Một số nguyên tắc tách component và đặt tên giúp code dễ đọc, dễ maintain hơn khi dự án lớn dần.",
-    date: "2026-04-09",
-  },
-  {
-    slug: "tailwind-meo-thuc-chien",
-    title: "Mẹo dùng Tailwind CSS nhanh và sạch",
-    excerpt:
-      "Các pattern class phổ biến để dựng UI nhanh, giữ consistency và tránh lặp code style.",
-    date: "2026-04-05",
-  },
-];
+import { posts } from "@/data/posts";
 
 export default function BlogPage() {
   return (
@@ -30,21 +7,34 @@ export default function BlogPage() {
       {posts.map((post) => (
         <article
           key={post.slug}
-          className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
+          className="rounded-none border-4 border-stone-700 bg-stone-100 p-6 shadow-[6px_6px_0_0_#44403c] transition hover:-translate-y-0.5"
         >
-          <p className="text-xs font-medium uppercase tracking-wide text-slate-400">
-            {post.date}
-          </p>
+          <div className="flex flex-wrap items-center gap-2 text-xs font-bold uppercase tracking-wide text-stone-600">
+            <span>{post.date}</span>
+            <span className="text-stone-400">|</span>
+            <span>{post.author}</span>
+          </div>
 
-          <h2 className="mt-2 text-xl font-semibold text-slate-900">{post.title}</h2>
+          <h2 className="mt-2 text-xl font-black text-stone-900">{post.title}</h2>
 
-          <p className="mt-3 leading-7 text-slate-600">{post.excerpt}</p>
+          <p className="mt-3 leading-7 text-stone-700">{post.excerpt}</p>
+
+          <div className="mt-4 flex flex-wrap gap-2">
+            {post.tags.map((tag) => (
+              <span
+                key={tag}
+                className="rounded-none border-2 border-lime-800 bg-lime-200 px-2 py-1 text-xs font-bold text-lime-900"
+              >
+                #{tag}
+              </span>
+            ))}
+          </div>
 
           <Link
             href={`/blog/${post.slug}`}
-            className="mt-4 inline-flex items-center text-sm font-semibold text-blue-600 transition hover:text-blue-700"
+            className="mt-5 inline-flex items-center rounded-none border-2 border-stone-700 bg-lime-400 px-3 py-2 text-sm font-black text-stone-900 transition hover:bg-lime-300"
           >
-            Đọc chi tiết
+            Mo Nhat Ky Chi Tiet
           </Link>
         </article>
       ))}

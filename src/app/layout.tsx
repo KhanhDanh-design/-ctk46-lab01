@@ -53,7 +53,10 @@ export default function RootLayout({
 
           <footer className="border-t border-slate-200 bg-white">
             <div className="mx-auto w-full max-w-6xl px-4 py-5 text-center text-sm text-slate-500 sm:px-6 lg:px-8">
-              <p>© 2026 CTK46 Portfolio Blog. Built with Next.js and Tailwind CSS.</p>
+              <p>
+                © 2026 CTK46 Portfolio Blog. Built with Next.js and Tailwind
+                CSS.
+              </p>
             </div>
           </footer>
         </div>

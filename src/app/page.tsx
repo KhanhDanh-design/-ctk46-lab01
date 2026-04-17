@@ -38,7 +38,9 @@ export default function HomePage() {
         </div>
         <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
           <p className="text-sm text-slate-500">Ngành học</p>
-          <p className="mt-2 font-semibold text-slate-800">Công nghệ Thông tin</p>
+          <p className="mt-2 font-semibold text-slate-800">
+            Công nghệ Thông tin
+          </p>
         </div>
         <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
           <p className="text-sm text-slate-500">Mục tiêu</p>
