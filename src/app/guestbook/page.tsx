@@ -1,9 +1,14 @@
 "use client";
 
-import { useActionState, useMemo, useRef, useState } from "react";
+import { useActionState, useEffect, useMemo, useRef, useState } from "react";
 import { useFormStatus } from "react-dom";
 import useSWR from "swr";
 import SubmitButton from "@/components/SubmitButton";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { useToast } from "@/hooks/use-toast";
 import {
   addGuestbookEntry as addGuestbookEntryAction,
   deleteGuestbookEntry,
@@ -28,13 +33,14 @@ function DeleteActionButton() {
   const { pending } = useFormStatus();
 
   return (
-    <button
+    <Button
       type="submit"
+      variant="destructive"
       disabled={pending}
-      className="rounded-none border-2 border-red-900 bg-red-200 px-3 py-1.5 text-xs font-black uppercase tracking-wide text-red-950 transition hover:bg-red-300 disabled:cursor-not-allowed disabled:opacity-60 dark:border-red-300 dark:bg-red-800/60 dark:text-red-100 dark:hover:bg-red-700/80"
+      className="h-8 rounded-none border-2 border-red-900 bg-red-200 px-3 py-1.5 text-xs font-black uppercase tracking-wide text-red-950 transition hover:bg-red-300 disabled:cursor-not-allowed disabled:opacity-60 dark:border-red-300 dark:bg-red-800/60 dark:text-red-100 dark:hover:bg-red-700/80"
     >
       {pending ? "Đang xóa..." : "Xóa"}
-    </button>
+    </Button>
   );
 }
 
@@ -46,7 +52,9 @@ export default function GuestbookPage() {
     mutate,
   } = useSWR<GuestbookEntry[]>(GUESTBOOK_API, fetcher);
 
+  const { toast } = useToast();
   const addFormRef = useRef<HTMLFormElement>(null);
+  const lastToastTimestampRef = useRef<number>(0);
   const [page, setPage] = useState(1);
 
   const initialAddState: GuestbookActionState = {
@@ -90,6 +98,34 @@ export default function GuestbookPage() {
     return entries.slice(start, start + ITEMS_PER_PAGE);
   }, [entries, currentPage]);
 
+  useEffect(() => {
+    if (
+      !addState.timestamp ||
+      addState.timestamp === lastToastTimestampRef.current
+    ) {
+      return;
+    }
+
+    lastToastTimestampRef.current = addState.timestamp;
+
+    if (addState.success) {
+      toast.success("Thành tựu: Đã lưu vào rương!", {
+        description: addState.message ?? "Lời nhắn đã được ghi thành công.",
+        className:
+          "rounded-none border-2 border-emerald-700 bg-emerald-100 text-emerald-950 dark:border-emerald-400 dark:bg-emerald-900 dark:text-emerald-100",
+      });
+      return;
+    }
+
+    if (addState.error) {
+      toast.error("Lỗi Redstone: Thông tin không hợp lệ!", {
+        description: addState.error,
+        className:
+          "rounded-none border-2 border-red-700 bg-red-100 text-red-950 dark:border-red-400 dark:bg-red-900 dark:text-red-100",
+      });
+    }
+  }, [addState, toast]);
+
   return (
     <div className="minecraft-page space-y-8">
       <section className="mc-animate-in rounded-none border-4 border-emerald-700 bg-linear-to-br from-emerald-500 via-emerald-400 to-lime-400 p-6 text-emerald-950 shadow-[8px_8px_0_0_#14532d] sm:p-8 dark:border-emerald-500 dark:from-emerald-600 dark:via-emerald-500 dark:to-emerald-700 dark:text-emerald-50 dark:shadow-[8px_8px_0_0_#022c22]">
@@ -122,14 +158,14 @@ export default function GuestbookPage() {
             >
               Tên người chơi
             </label>
-            <input
+            <Input
               id="guest-name"
               name="name"
               minLength={2}
               maxLength={50}
               required
               placeholder="Ví dụ: Steve"
-              className="w-full rounded-none border-2 border-emerald-700 bg-white px-3 py-2 font-semibold text-gray-900 outline-none transition focus:border-emerald-500 dark:border-emerald-500 dark:bg-gray-950 dark:text-white"
+              className="h-11 rounded-none border-2 border-emerald-700 bg-white px-3 py-2 font-semibold text-gray-900 outline-none transition focus-visible:border-emerald-500 focus-visible:ring-0 dark:border-emerald-500 dark:bg-gray-950 dark:text-white"
             />
           </div>
 
@@ -140,7 +176,7 @@ export default function GuestbookPage() {
             >
               Lời nhắn
             </label>
-            <textarea
+            <Textarea
               id="guest-message"
               name="message"
               rows={4}
@@ -148,7 +184,7 @@ export default function GuestbookPage() {
               maxLength={500}
               required
               placeholder="Để lại lời nhắn cho thế giới Minecraft..."
-              className="w-full rounded-none border-2 border-emerald-700 bg-white px-3 py-2 font-semibold text-gray-900 outline-none transition focus:border-emerald-500 dark:border-emerald-500 dark:bg-gray-950 dark:text-white"
+              className="rounded-none border-2 border-emerald-700 bg-white px-3 py-2 font-semibold text-gray-900 outline-none transition focus-visible:border-emerald-500 focus-visible:ring-0 dark:border-emerald-500 dark:bg-gray-950 dark:text-white"
             />
           </div>
 
@@ -214,57 +250,65 @@ export default function GuestbookPage() {
         {!isLoading && !error && paginatedEntries.length > 0 && (
           <div className="grid gap-4">
             {paginatedEntries.map((entry) => (
-              <article
+              <Card
                 key={entry.id}
-                className="rounded-none border-4 border-amber-800 bg-amber-100 p-4 shadow-[4px_4px_0_0_#78350f] transition hover:-translate-y-0.5 dark:border-amber-500 dark:bg-amber-950/40"
+                className="rounded-none border-4 border-stone-600 bg-stone-800 py-0 text-stone-100 shadow-[4px_4px_0_0_#1c1917] transition hover:-translate-y-0.5"
               >
-                <div className="flex flex-wrap items-start justify-between gap-3">
-                  <div>
-                    <h3 className="text-base font-black text-amber-950 dark:text-amber-100">
-                      {entry.name}
-                    </h3>
-                    <p className="mt-1 text-xs font-bold text-amber-800 dark:text-amber-300">
-                      {new Date(entry.createdAt).toLocaleString("vi-VN")}
-                    </p>
+                <CardHeader className="rounded-none px-4 pt-4 pb-2">
+                  <div className="flex flex-wrap items-start justify-between gap-3">
+                    <div>
+                      <CardTitle className="text-base font-black text-stone-100">
+                        {entry.name}
+                      </CardTitle>
+                      <p className="mt-1 text-xs font-bold text-stone-300">
+                        {new Date(entry.createdAt).toLocaleString("vi-VN")}
+                      </p>
+                    </div>
+
+                    <form action={deleteGuestbookEntry.bind(null, entry.id)}>
+                      <DeleteActionButton />
+                    </form>
                   </div>
+                </CardHeader>
 
-                  <form action={deleteGuestbookEntry.bind(null, entry.id)}>
-                    <DeleteActionButton />
-                  </form>
-                </div>
-
-                <p className="mt-3 whitespace-pre-wrap text-sm font-semibold text-amber-950 dark:text-amber-100">
-                  {entry.message}
-                </p>
-              </article>
+                <CardContent className="px-4 pt-0 pb-4">
+                  <p className="mt-1 whitespace-pre-wrap text-sm font-semibold text-stone-100">
+                    {entry.message}
+                  </p>
+                </CardContent>
+              </Card>
             ))}
           </div>
         )}
 
         <div className="flex flex-wrap items-center justify-between gap-3 pt-2">
-          <button
+          <Button
             type="button"
+            variant="outline"
             onClick={() =>
-              setPage((current) => Math.max(1, Math.min(totalPages, current) - 1))
+              setPage((current) =>
+                Math.max(1, Math.min(totalPages, current) - 1),
+              )
             }
             disabled={currentPage === 1}
-            className="rounded-none border-2 border-gray-700 bg-gray-200 px-4 py-2 text-sm font-black uppercase tracking-wide text-gray-900 transition hover:bg-gray-300 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-300 dark:bg-gray-700 dark:text-gray-100 dark:hover:bg-gray-600"
+            className="h-10 rounded-none border-2 border-gray-700 bg-gray-200 px-4 py-2 text-sm font-black uppercase tracking-wide text-gray-900 transition hover:bg-gray-300 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-300 dark:bg-gray-700 dark:text-gray-100 dark:hover:bg-gray-600"
           >
             Trang trước
-          </button>
+          </Button>
 
-          <button
+          <Button
             type="button"
+            variant="outline"
             onClick={() =>
               setPage((current) =>
                 Math.min(totalPages, Math.min(totalPages, current) + 1),
               )
             }
             disabled={currentPage >= totalPages}
-            className="rounded-none border-2 border-gray-700 bg-gray-200 px-4 py-2 text-sm font-black uppercase tracking-wide text-gray-900 transition hover:bg-gray-300 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-300 dark:bg-gray-700 dark:text-gray-100 dark:hover:bg-gray-600"
+            className="h-10 rounded-none border-2 border-gray-700 bg-gray-200 px-4 py-2 text-sm font-black uppercase tracking-wide text-gray-900 transition hover:bg-gray-300 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-300 dark:bg-gray-700 dark:text-gray-100 dark:hover:bg-gray-600"
           >
             Trang sau
-          </button>
+          </Button>
         </div>
       </section>
     </div>
