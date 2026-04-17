@@ -11,7 +11,9 @@ export default function ThemeToggle() {
         Chuyển đổi bối cảnh
       </p>
       <p className="mt-3 text-base font-black text-gray-900 dark:text-white">
-        {isNight ? "Chế độ ban đêm 🌙 (Nether)" : "Chế độ ban ngày ☀️ (Overworld)"}
+        {isNight
+          ? "Chế độ ban đêm 🌙 (Nether)"
+          : "Chế độ ban ngày ☀️ (Overworld)"}
       </p>
 
       <div className="mt-2 text-lg">

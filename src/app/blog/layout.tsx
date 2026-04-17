@@ -1,13 +1,32 @@
 import Link from "next/link";
-import { posts } from "@/data/posts";
+import type { Post } from "@/types";
 
 const categories = ["Survival", "Redstone", "Build", "Automation"];
 
-export default function BlogLayout({
+const REVALIDATE_SECONDS = 3600;
+
+async function getFeaturedPosts(): Promise<Post[]> {
+  const response = await fetch(
+    "https://jsonplaceholder.typicode.com/posts?_limit=3",
+    {
+      next: { revalidate: REVALIDATE_SECONDS },
+    },
+  );
+
+  if (!response.ok) {
+    return [];
+  }
+
+  return (await response.json()) as Post[];
+}
+
+export default async function BlogLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const featuredPosts = await getFeaturedPosts();
+
   return (
     <div className="minecraft-page space-y-6">
       <section className="mc-animate-in relative overflow-hidden rounded-none border-4 border-stone-700 bg-linear-to-b from-lime-300 to-lime-500 p-7 shadow-[6px_6px_0_0_#292524]">
@@ -53,10 +72,10 @@ export default function BlogLayout({
               Nhiệm Vụ Nổi Bật
             </h2>
             <ul className="mt-3 space-y-3">
-              {posts.slice(0, 3).map((post) => (
-                <li key={post.slug}>
+              {featuredPosts.map((post) => (
+                <li key={post.id}>
                   <Link
-                    href={`/blog/${post.slug}`}
+                    href={`/blog/${post.id}`}
                     className="text-sm font-semibold text-stone-800 transition hover:text-lime-700"
                   >
                     {post.title}

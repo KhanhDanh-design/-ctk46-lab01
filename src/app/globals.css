@@ -76,7 +76,8 @@ body {
   inset: 0;
   pointer-events: none;
   opacity: 0.08;
-  background-image: linear-gradient(to right, #525252 1px, transparent 1px),
+  background-image:
+    linear-gradient(to right, #525252 1px, transparent 1px),
     linear-gradient(to bottom, #525252 1px, transparent 1px);
   background-size: 24px 24px;
 }
@@ -105,9 +106,18 @@ body {
 }
 
 .mc-hover-lift {
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .mc-hover-lift:hover {
   transform: translateY(-2px);
+}
+
+.mc-line-clamp-3 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
 }

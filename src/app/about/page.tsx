@@ -38,16 +38,28 @@ export default function AboutPage() {
           </h2>
           <div className="mt-4 space-y-3 text-stone-700 dark:text-gray-200">
             <p>
-              <span className="font-bold text-stone-900 dark:text-white">Trường:</span> Đại học Đà Lạt
+              <span className="font-bold text-stone-900 dark:text-white">
+                Trường:
+              </span>{" "}
+              Đại học Đà Lạt
             </p>
             <p>
-              <span className="font-bold text-stone-900 dark:text-white">Ngành:</span> Công nghệ Thông tin
+              <span className="font-bold text-stone-900 dark:text-white">
+                Ngành:
+              </span>{" "}
+              Công nghệ Thông tin
             </p>
             <p>
-              <span className="font-bold text-stone-900 dark:text-white">Giai đoạn:</span> 2021 - 2026
+              <span className="font-bold text-stone-900 dark:text-white">
+                Giai đoạn:
+              </span>{" "}
+              2021 - 2026
             </p>
             <p>
-              <span className="font-bold text-stone-900 dark:text-white">Vai trò:</span> Minecraft Builder & Frontend Developer
+              <span className="font-bold text-stone-900 dark:text-white">
+                Vai trò:
+              </span>{" "}
+              Minecraft Builder & Frontend Developer
             </p>
           </div>
         </article>
@@ -58,11 +70,13 @@ export default function AboutPage() {
           </h2>
           <p className="mt-4 leading-7 text-stone-700 dark:text-gray-200">
             Mục tiêu của mình là trở thành Frontend Developer chuyên sâu về
-            performance, UI/UX và khả năng triển khai sản phẩm thực tế từ thiết kế tới production.
+            performance, UI/UX và khả năng triển khai sản phẩm thực tế từ thiết
+            kế tới production.
           </p>
           <div className="mt-4 rounded-none border-2 border-emerald-700 bg-emerald-100 p-3 text-sm font-semibold text-emerald-900 dark:border-emerald-500 dark:bg-emerald-900/30 dark:text-emerald-200">
             <span className="mc-pickaxe mr-2 inline-block">⛏️</span>
-            Đang luyện kỹ năng xây dựng hệ thống component linh hoạt như mạch Redstone.
+            Đang luyện kỹ năng xây dựng hệ thống component linh hoạt như mạch
+            Redstone.
           </div>
         </article>
       </section>
