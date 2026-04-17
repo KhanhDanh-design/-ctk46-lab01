@@ -18,8 +18,8 @@ export default function BlogLayout({
           Nhat Ky The Gioi Block
         </h1>
         <p className="mt-3 max-w-3xl leading-7 text-stone-800">
-          Noi luu tru huong dan sinh ton, cong trinh redstone va nhat ky xay dung
-          cua Danh Nguyen Tuan Khanh - 2212390.
+          Noi luu tru huong dan sinh ton, cong trinh redstone va nhat ky xay
+          dung cua Danh Nguyen Tuan Khanh - 2212390.
         </p>
       </section>
 

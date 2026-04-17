@@ -15,7 +15,9 @@ export default function BlogPage() {
             <span>{post.author}</span>
           </div>
 
-          <h2 className="mt-2 text-xl font-black text-stone-900">{post.title}</h2>
+          <h2 className="mt-2 text-xl font-black text-stone-900">
+            {post.title}
+          </h2>
 
           <p className="mt-3 leading-7 text-stone-700">{post.excerpt}</p>
 

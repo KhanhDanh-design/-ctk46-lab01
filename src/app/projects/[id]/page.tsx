@@ -6,7 +6,9 @@ type ProjectDetailPageProps = {
   params: Promise<{ id: string }>;
 };
 
-export default async function ProjectDetailPage({ params }: ProjectDetailPageProps) {
+export default async function ProjectDetailPage({
+  params,
+}: ProjectDetailPageProps) {
   const { id } = await params;
   const project = getProjectById(id);
 
@@ -29,10 +31,13 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
         <span>{project.author}</span>
       </div>
 
-      <h1 className="mt-2 text-3xl font-black text-stone-900">{project.name}</h1>
+      <h1 className="mt-2 text-3xl font-black text-stone-900">
+        {project.name}
+      </h1>
 
       <p className="mt-4 rounded-none border-2 border-stone-600 bg-stone-200 px-3 py-2 text-sm text-stone-700">
-        Trạng thái hiện tại: <span className="font-black">{project.status}</span>
+        Trạng thái hiện tại:{" "}
+        <span className="font-black">{project.status}</span>
       </p>
 
       <div className="mt-5 flex flex-wrap gap-2">

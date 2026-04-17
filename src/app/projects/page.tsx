@@ -38,7 +38,9 @@ export default function ProjectsPage() {
               </span>
             </div>
 
-            <p className="leading-7 text-stone-700">{project.shortDescription}</p>
+            <p className="leading-7 text-stone-700">
+              {project.shortDescription}
+            </p>
 
             <p className="mt-3 text-xs font-bold uppercase tracking-wide text-stone-600">
               Tác giả: {project.author}

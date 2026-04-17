@@ -31,13 +31,15 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
         <div className="mt-4 rounded-none border-2 border-amber-700 bg-amber-100 p-3 text-sm text-amber-950">
           <p>
-            Đường dẫn đầy đủ: <span className="font-black">/blog/{joinedPath}</span>
+            Đường dẫn đầy đủ:{" "}
+            <span className="font-black">/blog/{joinedPath}</span>
           </p>
           <p className="mt-1">
             Số segment: <span className="font-black">{slug.length}</span>
           </p>
           <p className="mt-1">
-            Danh sách segment: <span className="font-black">[{slug.join(", ")}]</span>
+            Danh sách segment:{" "}
+            <span className="font-black">[{slug.join(", ")}]</span>
           </p>
         </div>
       </article>
@@ -73,7 +75,8 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       </div>
 
       <p className="mt-4 rounded-none border-2 border-stone-600 bg-stone-200 px-3 py-2 text-sm text-stone-700">
-        Slug segments hiện tại: <span className="font-black">[{slug.join(" / ")}]</span>
+        Slug segments hiện tại:{" "}
+        <span className="font-black">[{slug.join(" / ")}]</span>
       </p>
 
       <div className="mt-6 space-y-4 leading-7 text-stone-700">
